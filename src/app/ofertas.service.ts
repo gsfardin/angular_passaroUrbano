@@ -57,4 +57,18 @@ export class OfertasService {
         let ofertas = this.ofertas;
         return ofertas;
     }
+
+    public getOfertas2(): Promise<Array<Oferta>> {
+        return new Promise((resolve, reject) => {
+            // Atributo de retorno para controle da promisse (externo)
+            let deuCerto = false;
+            // Teste do atributo e retorno conforme retorno do teste. Deu certo retorna resolve, não deu certo retorna reject
+            if(deuCerto) {
+                resolve( this.ofertas )  
+            }
+            else {
+                reject({codigoErro: 404, mensagemErro: 'Servidor não encotrado'}) 
+            }
+        })
+    }
 }
