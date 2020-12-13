@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
       .then(
         // Com base no primeiro parametro da promise (resolve) executa a função => {this.ofertas = ofertas;}
         (ofertas: Oferta[]) => { 
+          console.log('Promise resolved after 30 seconds')
           this.ofertas = ofertas; 
         }
       )

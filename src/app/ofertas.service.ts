@@ -61,14 +61,30 @@ export class OfertasService {
     public getOfertas2(): Promise<Array<Oferta>> {
         return new Promise((resolve, reject) => {
             // Atributo de retorno para controle da promisse (externo)
-            let deuCerto = false;
+            let deuCerto = true;
             // Teste do atributo e retorno conforme retorno do teste. Deu certo retorna resolve, não deu certo retorna reject
             if(deuCerto) {
-                resolve( this.ofertas )  
+                setTimeout(() => resolve( this.ofertas ), 3000)
             }
             else {
                 reject({codigoErro: 404, mensagemErro: 'Servidor não encotrado'}) 
             }
+        })
+        .then((ofertas: Oferta[]) => { 
+            // fazer alguma tratativa logo após o retorno da função (resolve)
+            console.log('Primeiro then da promise')
+            return ofertas
+        })
+        .then((ofertas: Oferta[]) => { 
+            // fazer alguma tratativa logo após o retorno da função (resolve)
+            console.log('Second then da promise')
+            return new Promise((resolve2, reject2) => {
+                setTimeout(() => { resolve2( ofertas ) },3000)
+            })
+        })
+        .then((ofertas: Oferta[]) => {
+            console.log('Terceiro then executado após mais 3 segundos')
+            return ofertas
         })
     }
 }
