@@ -16,16 +16,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // Método sincrono para consulta do serviço...
-    //this.ofertas = this.ofertasService.getOfertas()
-    //console.log(this.ofertas)
-
     // Método assincrono para consulta do serviço - Utilização de promises
-    this.ofertasService.getOfertas2()
+    this.ofertasService.getOfertas()
       .then(
         // Com base no primeiro parametro da promise (resolve) executa a função => {this.ofertas = ofertas;}
         (ofertas: Oferta[]) => { 
-          console.log('Promise resolved after 30 seconds')
           this.ofertas = ofertas; 
         }
       )
