@@ -9,7 +9,7 @@ export class OfertasService {
 
     public getOfertas(): Promise<void | Oferta[]> {
         // Efetuar uma requisição http e retornar um promisse Oferta[]
-        return this.http.get('http://localhost:3000/ofertas')
+        return this.http.get('http://localhost:3000/ofertas?destaque=true')
         .toPromise()
         .then((response: any) => response)
     }
